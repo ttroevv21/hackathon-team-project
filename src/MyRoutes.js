@@ -6,11 +6,13 @@ import CartPage from "./pages/CartPage";
 import ProductDetail from "./pages/ProductDetail";
 import AdminPanel from "./pages/AdminPanel";
 import AdminProvider from "./contexts/AdminProvider";
+import Navbar from "./components/Navbar";
 
 const MyRoutes = () => {
   return (
     <AdminProvider>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/add" element={<AddProduct />} />
