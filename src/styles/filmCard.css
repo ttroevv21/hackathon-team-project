@@ -1,0 +1,47 @@
+/* body {
+    background: #444;
+    width: 100%;
+    text-align: center;
+  } */
+  
+  ul {
+    text-align: left;
+    display: inline-block;
+    list-style-type: none;
+    text-shadow: 2px 2px black;
+  }
+  
+  .movieCard {
+    color: #DDD;
+    font-family: sans-serif;
+    display: block;
+    background: linear-gradient(#222, #111);
+    padding: 20px;
+    width: 400px;
+    overflow: hidden;
+    border-radius: 4px;
+    margin: 10px;
+    box-shadow: 2px 2px 3px #111;
+  }
+  
+  .poster {
+    margin-right: 20px;
+    height: 200px;
+    width: 135px;
+    float: left;
+    border: 1px solid #DDD;
+    border-radius: 3px;
+  }
+  
+  h3 {
+    margin: 0px;
+  }
+  
+  .movieYear {
+    color: red;
+  }
+  
+  p {
+    text-align: justify;
+    color: #888
+  }

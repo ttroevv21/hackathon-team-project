@@ -10,6 +10,8 @@ const INIT_STATE = {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "GET_PRODUCTS":
+      return { ...state, products: action.payload };
     default:
       return state;
   }
@@ -26,10 +28,25 @@ const AdminProvider = (props) => {
     }
   };
 
+  const getProducts = async () => {
+    try {
+      const res = await axios(API);
+      let action = {
+        type: "GET_PRODUCTS",
+        payload: res.data,
+      };
+      dispatch(action);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <AdminContext.Provider
       value={{
         addProduct: addProduct,
+        getProducts: getProducts,
+        products: state.products,
       }}
     >
       {props.children}
