@@ -7,6 +7,7 @@ import ProductDetail from "./pages/ProductDetail";
 import AdminPanel from "./pages/AdminPanel";
 import AdminProvider from "./contexts/AdminProvider";
 import AllFilms from "./pages/AllFilms";
+import Navbar from "./components/Navbar";
 import ClientProvider from "./contexts/ClientProvider";
 
 const MyRoutes = () => {
@@ -14,6 +15,7 @@ const MyRoutes = () => {
     <ClientProvider>
       <AdminProvider>
         <BrowserRouter>
+          <Navbar />
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/add" element={<AddProduct />} />
