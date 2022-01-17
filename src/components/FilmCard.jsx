@@ -1,20 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import CardActions from "@mui/material/CardActions";
+import { ClientContext } from "../contexts/ClientProvider";
 
 const FilmCard = (props) => {
+  const { addAndDelProductInCart, checkProductInCart } =
+    useContext(ClientContext);
   return (
     <li className="movieCard">
       <img className="poster" src={props.movie.image} alt={props.movie.name} />
       <h3>{props.movie.name}</h3>
       <span className="movieYear">({props.movie.year})</span>
       <p>{props.movie.description}</p>
+      <br></br>
+      <p>{props.movie.price} сом</p>
       <div className="col-md-3 col-sm-3 col-xs-6">
         {" "}
-        <a href="/" className="btn btn-sm animated-button thar-two">
-          Подробнее
-        </a>{" "}
-        <a href="/" className="btn btn-sm animated-button thar-two">
-          Добавить в корзину
-        </a>{" "}
+        <Link to={`/product/${props.movie.id}`}>
+          <a href="#" className="btn btn-sm animated-button thar-two">
+            Подробнее
+          </a>{" "}
+        </Link>
+        <CardActions>
+          {checkProductInCart(props.movie.id) ? (
+            <a
+              href="#"
+              onClick={() => addAndDelProductInCart(props.movie)}
+              className="btn btn-sm animated-button thar-two"
+            >
+              Убрать из корзины
+            </a>
+          ) : (
+            <a
+              href="#"
+              onClick={() => addAndDelProductInCart(props.movie)}
+              className="btn btn-sm animated-button thar-two"
+            >
+              Добавить в корзину
+            </a>
+          )}
+        </CardActions>
       </div>
     </li>
   );

@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import FilmCard from "../components/FilmCard";
-import "../style.less";
 import { AdminContext } from "../contexts/AdminProvider";
 
 const AllFilms = (props) => {
