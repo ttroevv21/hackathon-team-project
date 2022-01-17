@@ -12,6 +12,7 @@ import Loading from "./Loading";
 import { IconButton, Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import editIcon from "../images/pencil.png";
+import EditRow from "./EditRow";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -34,10 +35,15 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export default function MyTable() {
-  const { getProducts, products } = React.useContext(AdminContext);
+  const { getProducts, products, deleteProduct } =
+    React.useContext(AdminContext);
+
   React.useEffect(() => {
     getProducts();
   }, []);
+
+  const [editProduct, setEditProduct] = React.useState(null);
+
   if (!products) {
     return <Loading />;
   }
@@ -58,27 +64,43 @@ export default function MyTable() {
         </TableHead>
         <TableBody>
           {products.map((film) => (
-            <StyledTableRow key={film.id}>
-              <StyledTableCell component="th" scope="row">
-                {film.name}
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                {film.description}
-              </StyledTableCell>
-              <StyledTableCell align="right">{film.mark}</StyledTableCell>
-              <StyledTableCell align="right">{film.actors}</StyledTableCell>
-              <StyledTableCell align="right">{film.year}</StyledTableCell>
-              <StyledTableCell align="right">{film.price}</StyledTableCell>
-              <StyledTableCell align="right">{film.image}</StyledTableCell>
-              <StyledTableCell align="right">
-                <IconButton aria-label="delete" size="large">
-                  <DeleteIcon />
-                </IconButton>
-                <Button>
-                  <img src={editIcon} alt="edit-icon" />
-                </Button>
-              </StyledTableCell>
-            </StyledTableRow>
+            <React.Fragment key={film.id}>
+              {editProduct?.id === film.id ? (
+                <EditRow
+                  setEditProduct={setEditProduct}
+                  editProduct={editProduct}
+                />
+              ) : (
+                <StyledTableRow
+                  key={film.id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <StyledTableCell component="th" scope="products">
+                    {film.name}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {film.description}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">{film.mark}</StyledTableCell>
+                  <StyledTableCell align="right">{film.actors}</StyledTableCell>
+                  <StyledTableCell align="right">{film.year}</StyledTableCell>
+                  <StyledTableCell align="right">{film.price}</StyledTableCell>
+                  <StyledTableCell align="right">{film.image}</StyledTableCell>
+                  <StyledTableCell align="right">
+                    <Button onClick={() => setEditProduct(film)}>
+                      <img src={editIcon} alt="edit-icon" />
+                    </Button>
+                    <IconButton
+                      onClick={() => deleteProduct(film.id)}
+                      aria-label="delete"
+                      size="large"
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </StyledTableCell>
+                </StyledTableRow>
+              )}
+            </React.Fragment>
           ))}
         </TableBody>
       </Table>

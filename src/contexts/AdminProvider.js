@@ -41,11 +41,34 @@ const AdminProvider = (props) => {
     }
   };
 
+  const saveEditedProduct = async (product) => {
+    try {
+      await axios.patch(`${API}/${product.id}`, {
+        ...product,
+        price: +product.price,
+      });
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteProduct = async (id) => {
+    try {
+      await axios.delete(`${API}/${id}`);
+      getProducts();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <AdminContext.Provider
       value={{
         addProduct: addProduct,
         getProducts: getProducts,
+        saveEditedProduct: saveEditedProduct,
+        deleteProduct: deleteProduct,
         products: state.products,
       }}
     >

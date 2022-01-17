@@ -8,22 +8,25 @@ import AdminPanel from "./pages/AdminPanel";
 import AdminProvider from "./contexts/AdminProvider";
 import AllFilms from "./pages/AllFilms";
 import Navbar from "./components/Navbar";
+import ClientProvider from "./contexts/ClientProvider";
 
 const MyRoutes = () => {
   return (
-    <AdminProvider>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/add" element={<AddProduct />} />
-          <Route path="cart" element={<CartPage />} />
-          <Route path="/product/:id" element={<ProductDetail />} />
-          <Route path="/admin" element={<AdminPanel />} />
-          <Route path="/films" element={<AllFilms />} />
-        </Routes>
-      </BrowserRouter>
-    </AdminProvider>
+    <ClientProvider>
+      <AdminProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/add" element={<AddProduct />} />
+            <Route path="cart" element={<CartPage />} />
+            <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/admin" element={<AdminPanel />} />
+            <Route path="/films" element={<AllFilms />} />
+          </Routes>
+        </BrowserRouter>
+      </AdminProvider>
+    </ClientProvider>
   );
 };
 

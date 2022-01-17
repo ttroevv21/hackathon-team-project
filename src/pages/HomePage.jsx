@@ -1,17 +1,11 @@
-import React, { useContext, useEffect } from "react";
-import FilmCard from "../components/FilmCard";
-import { AdminContext } from "../contexts/AdminProvider";
+import React from "react";
+import { Container } from "@mui/material";
+import ProductsPagination from "../components/ProductsPagination";
+import AllProducts from "../components/AllProducts";
 
 const HomePage = (props) => {
-  const { getProducts, products } = useContext(AdminContext);
-  useEffect(() => {
-    getProducts();
-  }, []);
-
-  if (!products) {
-    return <h2>Loading..</h2>;
-  }
   return (
+
     <div className="homepage">
       <div className="header">
         <img
@@ -63,16 +57,13 @@ const HomePage = (props) => {
           </div>
         </div>
         <div className="films">
-          <ul>
-            {products.map((item) => (
-              <React.Fragment key={item.id}>
-                <FilmCard movie={item} />
-              </React.Fragment>
-            ))}
-          </ul>
+          
+      <Container>
+        <AllProducts />
+        <ProductsPagination />
+      </Container>
         </div>
       </div>
-    </div>
   );
 };
 
