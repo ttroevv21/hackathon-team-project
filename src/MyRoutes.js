@@ -6,6 +6,7 @@ import CartPage from "./pages/CartPage";
 import ProductDetail from "./pages/ProductDetail";
 import AdminPanel from "./pages/AdminPanel";
 import AdminProvider from "./contexts/AdminProvider";
+import AllFilms from "./pages/AllFilms";
 import Navbar from "./components/Navbar";
 
 const MyRoutes = () => {
@@ -19,6 +20,7 @@ const MyRoutes = () => {
           <Route path="cart" element={<CartPage />} />
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/films" element={<AllFilms />} />
         </Routes>
       </BrowserRouter>
     </AdminProvider>

@@ -4,7 +4,7 @@ import { Container, TextField } from "@mui/material";
 import { Button } from "react-bootstrap";
 
 const AddProduct = () => {
-  const [newProduct, setnewProduct] = useState({
+  const [newProduct, setNewProduct] = useState({
     name: "",
     description: "",
     mark: "",
@@ -21,7 +21,7 @@ const AddProduct = () => {
       ...newProduct,
       [event.target.name]: event.target.value,
     };
-    setnewProduct(obj);
+    setNewProduct(obj);
   }
 
   function handleSubmit(event) {
@@ -33,13 +33,13 @@ const AddProduct = () => {
       }
     }
     addProduct(newProduct);
-    setnewProduct({
+    setNewProduct({
       name: "",
       description: "",
       mark: "",
       actors: "",
       year: "",
-      price: 0,
+      price: "",
       image: "",
     });
   }
@@ -105,7 +105,9 @@ const AddProduct = () => {
             label="Image"
             variant="outlined"
           />
-          <Button variant="outline-dark">Create</Button>
+          <Button type="submit" variant="outline-dark">
+            Create
+          </Button>
         </form>
       </Container>
     </div>
