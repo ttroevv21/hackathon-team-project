@@ -17,7 +17,6 @@ const AllProducts = () => {
 
   return (
     <div>
-      <h1>ALL PRODUCTS</h1>
       <div>
         <Grid container spacing={5}>
           {products.map((item) => (

@@ -13,12 +13,24 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import logo from "../images/logo.jpg";
+import { Badge } from "@mui/material";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { ClientContext } from "../contexts/ClientProvider";
+import "../styles/search.css";
+import { useNavigate } from "react-router-dom";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const { productsCount } = React.useContext(ClientContext);
+
+  let search = new URLSearchParams(window.location.search);
+  let navigate = useNavigate();
+
+  const [value, setValue] = React.useState("");
+  const { getProducts } = React.useContext(ClientContext);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -34,6 +46,20 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  function searchFilm(key, value) {
+    console.log(value);
+    search.set(key, value);
+    console.log(window.location.pathname);
+    const newPath = `${window.location.pathname}?${search.toString()}`;
+    navigate(newPath);
+    setValue(search.get("q"));
+    getProducts();
+  }
+
+  React.useEffect(() => {
+    setValue(search.get("q"));
+  }, []);
 
   return (
     <AppBar position="static" style={{ background: "black" }}>
@@ -96,6 +122,7 @@ const Navbar = () => {
               LOGO
             </Typography>
           </Link>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Link to="/admin">
               <Button
@@ -105,6 +132,35 @@ const Navbar = () => {
                 Admin panel
               </Button>
             </Link>
+          </Box>
+
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+            <form action="" className="search-bar">
+              <input
+                onChange={(event) => {
+                  searchFilm("q", event.target.value);
+                }}
+                type="search"
+                name="search"
+                pattern=".*\S.*"
+                required
+              />
+              <button className="search-btn" type="submit">
+                <span>Search</span>
+              </button>
+            </form>
+          </Box>
+
+          <Box>
+            <MenuItem>
+              <Link to="/cart">
+                <IconButton color="inherit">
+                  <Badge badgeContent={productsCount} color="error">
+                    <ShoppingCartIcon />
+                  </Badge>
+                </IconButton>
+              </Link>
+            </MenuItem>
           </Box>
 
           <Box>

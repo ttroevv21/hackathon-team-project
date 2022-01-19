@@ -12,6 +12,7 @@ const AddProduct = () => {
     year: "",
     price: "",
     image: "",
+    genre: "",
   });
 
   const { addProduct } = useContext(AdminContext);
@@ -41,6 +42,7 @@ const AddProduct = () => {
       year: "",
       price: "",
       image: "",
+      genre: "",
     });
   }
 
@@ -103,6 +105,14 @@ const AddProduct = () => {
             value={newProduct.image}
             name="image"
             label="Image"
+            variant="outlined"
+          />
+          <TextField
+            onChange={handleInput}
+            fullWidth
+            value={newProduct.genre}
+            name="genre"
+            label="Genre"
             variant="outlined"
           />
           <Button type="submit" variant="outline-dark">

@@ -17,27 +17,25 @@ const FilmCard = (props) => {
       <div className="col-md-3 col-sm-3 col-xs-6">
         {" "}
         <Link to={`/product/${props.movie.id}`}>
-          <a href="#" className="btn btn-sm animated-button thar-two">
+          <button className="btn btn-sm animated-button thar-two">
             Подробнее
-          </a>{" "}
+          </button>{" "}
         </Link>
         <CardActions>
           {checkProductInCart(props.movie.id) ? (
-            <a
-              href="#"
+            <button
               onClick={() => addAndDelProductInCart(props.movie)}
               className="btn btn-sm animated-button thar-two"
             >
               Убрать из корзины
-            </a>
+            </button>
           ) : (
-            <a
-              href="#"
+            <button
               onClick={() => addAndDelProductInCart(props.movie)}
               className="btn btn-sm animated-button thar-two"
             >
               Добавить в корзину
-            </a>
+            </button>
           )}
         </CardActions>
       </div>

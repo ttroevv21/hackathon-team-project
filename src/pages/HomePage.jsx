@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Container } from "@mui/material";
 import ProductsPagination from "../components/ProductsPagination";
 import AllProducts from "../components/AllProducts";
+import { useNavigate } from "react-router-dom";
+import { ClientContext } from "../contexts/ClientProvider";
 
 const HomePage = (props) => {
-  return (
+  let search = new URLSearchParams(window.location.search);
+  let navigate = useNavigate();
 
+  const [genre, setGenre] = useState("");
+  const [value, setValue] = useState("");
+  const { getProducts } = useContext(ClientContext);
+
+  function searchGenre(key, value) {
+    console.log(value);
+    search.set(key, value);
+    console.log(window.location.pathname);
+    const newPath = `${window.location.pathname}?${search.toString()}`;
+    navigate(newPath);
+    setGenre(search.get("genre_like"));
+    setValue(search.get("q"));
+    getProducts();
+  }
+
+  useEffect(() => {
+    setGenre(search.get("genre_like"));
+    setValue(search.get("q"));
+  }, []);
+
+  return (
     <div className="homepage">
       <div className="header">
         <img
@@ -22,17 +46,41 @@ const HomePage = (props) => {
             <div className="genre-block">
               <b style={{ fontSize: "14px", color: "white" }}>Жанры</b>
               <br />
-              <a href="/anime/">Аниме</a>
+              <span
+                className="navigate-span"
+                onClick={(event) => {
+                  searchGenre(
+                    "genre_like",
+                    event.target.innerText.toLowerCase()
+                  );
+                }}
+              >
+                Аниме
+              </span>
               <br />
-              <a href="/biographical/">Биографии</a>
+              <span
+                className="navigate-span"
+                onClick={(event) => {
+                  searchGenre(
+                    "genre_like",
+                    event.target.innerText.toLowerCase()
+                  );
+                }}
+              >
+                Криминал
+              </span>
               <br />
-              <a href="/action/">Боевики</a>
-              <br />
-              <a href="/western/">Вестерны</a>
-              <br />
-              <a href="/military/">Военные</a>
-              <br />
-              <a href="/detective/">Детективы</a>
+              <span
+                className="navigate-span"
+                onClick={(event) => {
+                  searchGenre(
+                    "genre_like",
+                    event.target.innerText.toLowerCase()
+                  );
+                }}
+              >
+                Драма
+              </span>
             </div>
             <div className="year-block">
               <b style={{ fontSize: "14px", color: "white" }}>По году</b>
@@ -57,13 +105,13 @@ const HomePage = (props) => {
           </div>
         </div>
         <div className="films">
-          
-      <Container>
-        <AllProducts />
-        <ProductsPagination />
-      </Container>
+          <Container>
+            <AllProducts />
+            <ProductsPagination />
+          </Container>
         </div>
       </div>
+    </div>
   );
 };
 

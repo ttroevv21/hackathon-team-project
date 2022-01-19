@@ -60,3 +60,38 @@ a {
 .homepage {
   background-color: black;
 }
+
+.product-img img {
+  height: 200px;
+}
+
+.cart-product {
+  display: flex;
+}
+
+.product-info {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.cart-global {
+  background-color: black;
+}
+
+.cart {
+  margin: auto auto;
+  width: 70%;
+  background-color: black;
+  padding-bottom: 50px;
+}
+
+.cart-btn {
+  color: black !important;
+}
+
+.MuiTableFooter-root {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: center !important;
+  padding-bottom: 20px;
+}

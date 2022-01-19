@@ -19,7 +19,7 @@ const MyRoutes = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/add" element={<AddProduct />} />
-            <Route path="cart" element={<CartPage />} />
+            <Route path="/cart" element={<CartPage />} />
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/films" element={<AllFilms />} />

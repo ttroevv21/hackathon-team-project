@@ -8,7 +8,7 @@
 
 
 /* Global Button Styles */
-a.animated-button:link, a.animated-button:visited {
+button.animated-button:link, button.animated-button:visited {
 	position: relative;
 	display: block;
 	margin: 30px auto 0;
@@ -28,7 +28,7 @@ a.animated-button:link, a.animated-button:visited {
 	-o-transition: all 1s ease;
 	transition: all 1s ease;
 }
-a.animated-button:link:after, a.animated-button:visited:after {
+button.animated-button:link:after, button.animated-button:visited:after {
 	content: "";
 	position: absolute;
 	height: 0%;
@@ -41,14 +41,14 @@ a.animated-button:link:after, a.animated-button:visited:after {
 	-o-transition: all 0.75s ease 0s;
 	transition: all 0.75s ease 0s;
 }
-a.animated-button:link:hover, a.animated-button:visited:hover {
+button.animated-button:link:hover, button.animated-button:visited:hover {
 	color: #FFF;
 	text-shadow: none;
 }
-a.animated-button:link:hover:after, a.animated-button:visited:hover:after {
+button.animated-button:link:hover:after, button.animated-button:visited:hover:after {
 	height: 450%;
 }
-a.animated-button:link, a.animated-button:visited {
+button.animated-button:link, button.animated-button:visited {
 	position: relative;
 	display: block;
 	margin: 30px auto 0;
@@ -71,10 +71,10 @@ a.animated-button:link, a.animated-button:visited {
 
 /* Victoria Buttons */
 
-a.animated-button.victoria-four {
+button.animated-button.victoria-four {
 	border: 2px solid #D24D57;
 }
-a.animated-button.victoria-four:after {
+button.animated-button.victoria-four:after {
 	background: #D24D57;
 	opacity: .5;
 	-moz-transform: translateY(-50%) translateX(-50%) rotate(90deg);
@@ -82,7 +82,7 @@ a.animated-button.victoria-four:after {
 	-webkit-transform: translateY(-50%) translateX(-50%) rotate(90deg);
 	transform: translateY(-50%) translateX(-50%) rotate(90deg);
 }
-a.animated-button.victoria-four:hover:after {
+button.animated-button.victoria-four:hover:after {
 	opacity: 1;
 	height: 600% !important;
 }
@@ -90,7 +90,7 @@ a.animated-button.victoria-four:hover:after {
 /* Thar Buttons */
 
 
-a.animated-button.thar-two {
+button.animated-button.thar-two {
 	color: #fff;
 	cursor: pointer;
 	display: block;
@@ -98,17 +98,18 @@ a.animated-button.thar-two {
 	border: 2px solid #F7CA18;
 	transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
 }
-a.animated-button.thar-two:hover {
+button.animated-button.thar-two:hover {
 	color: #000 !important;
 	background-color: transparent;
+	background-color: #F7CA18;
 	text-shadow: ntwo;
 }
-a.animated-button.thar-two:hover:before {
+button.animated-button.thar-two:hover:before {
 	top: 0%;
 	bottom: auto;
 	height: 100%;
 }
-a.animated-button.thar-two:before {
+button.animated-button.thar-two:before {
 	display: block;
 	position: absolute;
 	left: 0px;

@@ -2,11 +2,16 @@ import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ClientContext } from "../contexts/ClientProvider";
 import Loading from "../components/Loading";
-import { Grid, Container } from "@mui/material";
+import { Grid, Container, CardActions } from "@mui/material";
 
 const ProductDetail = () => {
   const params = useParams();
-  const { getProductDetail, detail } = useContext(ClientContext);
+  const {
+    getProductDetail,
+    detail,
+    addAndDelProductInCart,
+    checkProductInCart,
+  } = useContext(ClientContext);
 
   useEffect(() => {
     getProductDetail(params.id);
@@ -52,9 +57,23 @@ const ProductDetail = () => {
                 </li>
                 <li>
                   <strong>{detail.price} Сом</strong>
-                  <a href="/" className="btn btn-sm animated-button thar-two">
-                    Добавить в корзину
-                  </a>
+                  <CardActions>
+                    {checkProductInCart(detail.id) ? (
+                      <button
+                        onClick={() => addAndDelProductInCart(detail)}
+                        className="btn btn-sm animated-button thar-two"
+                      >
+                        Убрать из корзины
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => addAndDelProductInCart(detail)}
+                        className="btn btn-sm animated-button thar-two"
+                      >
+                        Добавить в корзину
+                      </button>
+                    )}
+                  </CardActions>
                 </li>
               </ul>
             </div>

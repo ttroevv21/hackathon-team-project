@@ -59,6 +59,7 @@ export default function MyTable() {
             <StyledTableCell align="right">Year</StyledTableCell>
             <StyledTableCell align="right">Price</StyledTableCell>
             <StyledTableCell align="right">Image</StyledTableCell>
+            <StyledTableCell align="right">Genre</StyledTableCell>
             <StyledTableCell align="right">#</StyledTableCell>
           </TableRow>
         </TableHead>
@@ -86,6 +87,7 @@ export default function MyTable() {
                   <StyledTableCell align="right">{film.year}</StyledTableCell>
                   <StyledTableCell align="right">{film.price}</StyledTableCell>
                   <StyledTableCell align="right">{film.image}</StyledTableCell>
+                  <StyledTableCell align="right">{film.genre}</StyledTableCell>
                   <StyledTableCell align="right">
                     <Button onClick={() => setEditProduct(film)}>
                       <img src={editIcon} alt="edit-icon" />

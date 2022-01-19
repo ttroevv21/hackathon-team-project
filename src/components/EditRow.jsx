@@ -79,6 +79,14 @@ const EditRow = ({ setEditProduct, editProduct }) => {
         />
       </TableCell>
       <TableCell align="right">
+        <TextField
+          variant="outlined"
+          name="genre"
+          onChange={handleChange}
+          value={product.genre}
+        />
+      </TableCell>
+      <TableCell align="right">
         <Button onClick={handleClick} variant="outlined">
           Save
         </Button>
