@@ -109,13 +109,13 @@ export default function MyTable() {
                       <Button onClick={() => setEditProduct(film)}>
                         <img src={editIcon} alt="edit-icon" />
                       </Button>
-                      <IconButton
+                      <Button
                         onClick={() => deleteProduct(film.id)}
                         aria-label="delete"
                         size="large"
                       >
                         <DeleteIcon />
-                      </IconButton>
+                      </Button>
                     </StyledTableCell>
                   </StyledTableRow>
                 )}

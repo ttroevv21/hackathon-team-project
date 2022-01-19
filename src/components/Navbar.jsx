@@ -138,22 +138,24 @@ const Navbar = () => {
             </Link>
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <form action="" className="search-bar">
-              <input
-                onChange={(event) => {
-                  searchFilm("q", event.target.value);
-                }}
-                type="search"
-                name="search"
-                pattern=".*\S.*"
-                required
-              />
-              <button className="search-btn" type="submit">
-                <span>Search</span>
-              </button>
-            </form>
-          </Box>
+          <div className="search-bar">
+            <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+              <form action="" className="search-bar">
+                <input
+                  onChange={(event) => {
+                    searchFilm("q", event.target.value);
+                  }}
+                  type="search"
+                  name="search"
+                  pattern=".*\S.*"
+                  required
+                />
+                <button className="search-btn" type="submit">
+                  <span>Search</span>
+                </button>
+              </form>
+            </Box>
+          </div>
 
           <Box>
             <MenuItem>
