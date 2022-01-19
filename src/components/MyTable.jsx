@@ -68,6 +68,7 @@ export default function MyTable() {
               <StyledTableCell align="right">Year</StyledTableCell>
               <StyledTableCell align="right">Price</StyledTableCell>
               <StyledTableCell align="right">Image</StyledTableCell>
+              <StyledTableCell align="right">Genre</StyledTableCell>
               <StyledTableCell align="right">#</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -102,16 +103,19 @@ export default function MyTable() {
                       {film.image}
                     </StyledTableCell>
                     <StyledTableCell align="right">
+                      {film.genre}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
                       <Button onClick={() => setEditProduct(film)}>
                         <img src={editIcon} alt="edit-icon" />
                       </Button>
-                      <Button
+                      <IconButton
                         onClick={() => deleteProduct(film.id)}
                         aria-label="delete"
                         size="large"
                       >
                         <DeleteIcon />
-                      </Button>
+                      </IconButton>
                     </StyledTableCell>
                   </StyledTableRow>
                 )}

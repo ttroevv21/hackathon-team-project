@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import CartTable from "../components/CartTable";
 import { ClientContext } from "../contexts/ClientProvider";
 import Loading from "../components/Loading";
+import Navbar from "../components/Navbar";
 
 const CartPage = () => {
   const { cart, getCart } = useContext(ClientContext);
@@ -20,7 +21,7 @@ const CartPage = () => {
 
   return (
     <div>
-      <CartTable />
+      <CartTable cart={cart} />
     </div>
   );
 };

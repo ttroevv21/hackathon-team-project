@@ -7,7 +7,12 @@ import { MDBFooter } from "mdb-react-ui-kit";
 
 const ProductDetail = () => {
   const params = useParams();
-  const { getProductDetail, detail } = useContext(ClientContext);
+  const {
+    getProductDetail,
+    detail,
+    addAndDelProductInCart,
+    checkProductInCart,
+  } = useContext(ClientContext);
 
   useEffect(() => {
     getProductDetail(params.id);
@@ -52,19 +57,24 @@ const ProductDetail = () => {
                   ))}
                 </li>
                 <li>
-                  <span>Цена: {detail.price} Сом</span>
-                  <li className="btn-li">
-                    <Button color={"secondary"} variant={"contained"}>
-                      Добавить в корзину
-                    </Button>
-                  </li>
-                  <li className="btn-li">
-                    <Link to={"/payment"}>
-                      <Button color={"success"} variant={"contained"}>
-                        Оплатить
-                      </Button>
-                    </Link>
-                  </li>
+                  <strong>{detail.price} Сом</strong>
+                  <CardActions>
+                    {checkProductInCart(detail.id) ? (
+                      <button
+                        onClick={() => addAndDelProductInCart(detail)}
+                        className="btn btn-sm animated-button thar-two"
+                      >
+                        Убрать из корзины
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => addAndDelProductInCart(detail)}
+                        className="btn btn-sm animated-button thar-two"
+                      >
+                        Добавить в корзину
+                      </button>
+                    )}
+                  </CardActions>
                 </li>
               </ul>
             </div>

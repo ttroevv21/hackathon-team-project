@@ -121,15 +121,15 @@ const ClientProvider = (props) => {
         products: [],
         totalPrice: 0,
       };
-      let action = {
-        type: "GET_CART",
-        payload: cart,
-      };
-      dispatch(action);
     }
+    let action = {
+      type: "GET_CART",
+      payload: cart,
+    };
+    dispatch(action);
   }
 
-  function deleteProductInCart(value, id) {
+  function deleteProductInCart(id) {
     let cart = JSON.parse(localStorage.getItem("cart"));
     cart.products = cart.products.filter((item) => {
       return item.product.id !== id;
