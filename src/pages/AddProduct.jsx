@@ -49,7 +49,6 @@ const AddProduct = () => {
   return (
     <div className="add-product">
       <Container>
-        <h2>ADD PRODUCT</h2>
         <form onSubmit={handleSubmit}>
           <TextField
             onChange={handleInput}

@@ -3,8 +3,7 @@ import MyTable from "../components/MyTable";
 
 const AdminPanel = () => {
   return (
-    <div>
-      <h2>Admin Panel</h2>
+    <div className="admin-panel">
       <MyTable />
     </div>
   );
