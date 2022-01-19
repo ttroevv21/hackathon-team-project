@@ -57,24 +57,37 @@ const ProductDetail = () => {
                   ))}
                 </li>
                 <li>
+                  <span>Жанр: </span>
+                  <span>{detail.genre}</span>
+                </li>
+                <li>
                   <strong>{detail.price} Сом</strong>
-                  <CardActions>
-                    {checkProductInCart(detail.id) ? (
-                      <button
-                        onClick={() => addAndDelProductInCart(detail)}
-                        className="btn btn-sm animated-button thar-two"
-                      >
-                        Убрать из корзины
-                      </button>
-                    ) : (
-                      <button
-                        onClick={() => addAndDelProductInCart(detail)}
-                        className="btn btn-sm animated-button thar-two"
-                      >
-                        Добавить в корзину
-                      </button>
-                    )}
-                  </CardActions>
+                  <li className="detail-btn">
+                    <CardActions>
+                      {checkProductInCart(detail.id) ? (
+                        <Button
+                          color={"primary"}
+                          variant={"contained"}
+                          onClick={() => addAndDelProductInCart(detail)}
+                        >
+                          Убрать из корзины
+                        </Button>
+                      ) : (
+                        <Button
+                          color={"success"}
+                          variant={"contained"}
+                          onClick={() => addAndDelProductInCart(detail)}
+                        >
+                          Добавить в корзину
+                        </Button>
+                      )}
+                      <Link to={"/payment"}>
+                        <Button color={"success"} variant={"contained"}>
+                          Оплатить
+                        </Button>
+                      </Link>
+                    </CardActions>
+                  </li>
                 </li>
               </ul>
             </div>
@@ -82,9 +95,7 @@ const ProductDetail = () => {
         </Grid>
       </div>
       <div>
-        <li>
-          <strong>{detail.description}</strong>
-        </li>
+        <strong>{detail.description}</strong>
       </div>
       <div className="footer">
         <MDBFooter

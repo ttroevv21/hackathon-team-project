@@ -2,6 +2,8 @@ import { Button } from "@mui/material";
 import React, { useState } from "react";
 import Cards from "react-credit-cards";
 import "react-credit-cards/es/styles-compiled.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const PaymentPage = () => {
   const [number, setNumber] = useState("");
@@ -9,6 +11,14 @@ const PaymentPage = () => {
   const [expiry, setExpiry] = useState("");
   const [cvc, setCvc] = useState("");
   const [focus, setFocus] = useState("");
+
+  function toastify() {
+    toast.success("Успешно оплачено!", {
+      position: "top-center",
+      pauseOnHover: false,
+      autoClose: 2000,
+    });
+  }
 
   return (
     <div className="payment-page">
@@ -53,9 +63,10 @@ const PaymentPage = () => {
           onFocus={(event) => setFocus(event.target.name)}
         />
       </form>
-      <Button variant="contained" color="success">
+      <Button onClick={toastify} variant="contained" color="success">
         Оплатить
       </Button>
+      <ToastContainer />
     </div>
   );
 };

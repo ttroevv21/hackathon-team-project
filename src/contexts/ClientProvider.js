@@ -148,7 +148,7 @@ const ClientProvider = (props) => {
 
   const [posts, setPosts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 2;
+  const postsPerPage = 4;
 
   useEffect(() => {
     if (state.products) {
