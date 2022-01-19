@@ -9,6 +9,7 @@ import AdminProvider from "./contexts/AdminProvider";
 import AllFilms from "./pages/AllFilms";
 import Navbar from "./components/Navbar";
 import ClientProvider from "./contexts/ClientProvider";
+import PaymentPage from "./pages/PaymentPage";
 
 const MyRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const MyRoutes = () => {
             <Route path="/product/:id" element={<ProductDetail />} />
             <Route path="/admin" element={<AdminPanel />} />
             <Route path="/films" element={<AllFilms />} />
+            <Route path="/payment" element={<PaymentPage />} />
           </Routes>
         </BrowserRouter>
       </AdminProvider>

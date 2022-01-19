@@ -13,10 +13,13 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link } from "react-router-dom";
 import logo from "../images/logo.jpg";
+import { AuthContext } from "../contexts/AuthProvider";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Navbar = () => {
+  // const { authWithGoogle, user, logOut } = React.useContext(AuthContext);
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -93,7 +96,7 @@ const Navbar = () => {
               component="div"
               sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
             >
-              LOGO
+              <img width="70px" src={logo} alt="logo" />
             </Typography>
           </Link>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
@@ -107,46 +110,27 @@ const Navbar = () => {
             </Link>
           </Box>
 
-          <Box>
-            <Link to="/add">
-              <Button
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                Add product
-              </Button>
-            </Link>
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          {/* <MenuItem>
+            <Link to="/cart">
+              <IconButton color="inherit">
+                <Badge badgeContent={productsCount} color="error">
+                  <ShoppingBasketIcon />
+                </Badge>
               </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+            </Link>
+          </MenuItem>
+          {user ? (
+            <>
+              <MenuItem>{user.email}</MenuItem>
+              <Button onClick={logOut}>
+                <img width="30px" src={LogoutIcon} alt="logout"></img>
+              </Button>
+            </>
+          ) : (
+            <Button onClick={authWithGoogle} color="inherit">
+              Войти
+            </Button>
+          )} */}
         </Toolbar>
       </Container>
     </AppBar>
